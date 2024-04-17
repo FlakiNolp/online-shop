@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header">
+        <h1 class="header__title" onclick="changeLocationCollection()">Wish</h1>
+        <nav class="header__menu">
+            <ul class="header__list">
+                <li class="header__item" onclick="changeLocationLogin()">
+                    <img src="img/person.svg" alt="person">
+                    <div id="login">Войти</div>
+                </li>
+                <li class="header__item" onclick="changeLocationOrder()">
+                    <img src="img/order.svg" alt="person">
+                    <div id="order">Заказы</div>
+                </li>
+                <li class="header__item" onclick="changeLocationCart()">
+                    <img src="img/shop.svg" alt="person">
+                    <div id="cart">Корзина</div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+<div id="catalog__content" class="catalog__content">
+  <form method="post" content="application/x-www-form-urlencoded" onsubmit="send(event, this)">
+      <label>Почта</label><input id="username" type="email">
+      <label>Пароль</label><input id="password" type="password">
+      <input type="submit" value="Регистрация">
+  </form>
+  <a href="/login">Войти</a>
+  <p id="status"></p>
+</div>
+<footer class="footer">
+        <div class="footer__text">Служба поддержки</div>
+        <a href="tel:+7(999)999-99-99" class="footer__tel">+7(999)999-99-99|</a>
+        <a href="mailto:9JpjF@example.com" class="footer__email">9JpjF@example.com</a>
+        <div class="footer__time">c 8:00 до 22:00  по МСК</div>
+        <div class="footer__copyright">Wish</div>
+    </footer>
+</body>
+<script type="application/javascript">
+    function send(e,form) {
+        fetch('http://192.168.3.11:1000/sign-up', {method: 'post', body: new URLSearchParams({'username': form.username.value, 'password': form.password.value}), headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+            .then((response) => {if (response.ok)
+                return document.getElementById("status").textContent = "Письмо отправлено на почту";
+            throw new Error("Такой аккаунт уже существует")})
+            .catch((error) => {document.getElementById("status").textContent = error})
+        e.preventDefault();
+        form.reset();
+    }
+function changeLocationCart() {
+    window.location.href = '/cart'
+}
+function changeLocationLogin() {
+    window.location.href = '/login'
+}
+function changeLocationOrder() {
+    window.location.href = '/order'
+}
+function changeLocationCollection() {
+    window.location.href = '/collection'
+}
+</script>
+</html>

@@ -1,0 +1,135 @@
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: "Source Sans 3", sans-serif
+
+body
+    min-height: 100vh
+.header
+    background: #000
+    color: #fff
+    display: flex
+    height: 100px
+    align-items: center
+    padding: 0 40px
+    &__title
+        display: block
+        font-size: 56px
+        font-weight: 300
+        line-height: 70px
+        cursor: pointer
+    &__menu
+        margin-left: auto
+    &__list
+        display: flex
+        list-style: none
+    &__item
+        display: flex
+        flex-direction: column
+        margin: 0 20px
+        align-items: center
+        cursor: pointer
+        img
+            width: 34px
+        div
+            margin-top: 12px
+            text-decoration: none
+            color: white
+            font-size: 12px
+            font-weight: 500
+            line-height: 18px
+.main
+    height: calc(100vh - 100px)
+    background-color: black
+    position: relative
+    img
+        display: block
+        margin: 0 auto
+        height: 100%
+    &__content
+        position: absolute
+        top: 80%
+        left: 50%
+        transform: translate(-50%, -50%)
+        h2
+            font-size: 90px
+            font-weight: 400
+        .main__button
+            display: block
+            margin: 0 auto
+            width: 206px
+            cursor: pointer
+            border: none
+            outline: none
+            height: 51px
+            border: 1px solid rgb(0, 0, 0)
+            background-color: transparent
+            font-size: 24px
+            font-weight: 400
+            line-height: 35px
+.catalog
+    min-height: calc( 100vh - 100px )
+    background-color: #1E1E1E
+    &__info
+        color: #fff
+        display: flex
+        flex-direction: column
+        padding: 40px 0
+        align-items: center
+        .catalog__back
+            font-size: 16px
+            font-weight: 100
+        .catalog__title
+            margin-top: 20px
+        ul
+            margin-top: 30px
+            list-style: none
+            display: flex
+            li
+                margin: 0 20px
+                cursor: pointer
+            .active
+                text-decoration: underline
+    &__content
+        display: flex
+        flex-wrap: wrap
+        justify-content: left
+        padding: 20px 80px
+        .catalog__card
+            margin-left: 5px
+            display: flex
+            flex-basis: 33%
+            flex-direction: column
+            align-items: center
+            color: #fff
+            margin-bottom: 40px
+            &-info
+                margin-top: 24px
+                font-size: 16px
+                font-weight: 500
+            &-price
+                font-size: 16px
+                font-weight: 700
+.footer
+    background-color: #000
+    padding: 60px 32px
+    color: #fff
+    &__text
+        margin-bottom: 20px
+        font-size: 18px
+        font-weight: 700
+    a
+        margin-left: 10px
+        text-decoration: none
+        color: #fff
+        font-size: 16px
+        font-weight: 400
+    &__time
+        margin-top: 20px
+        font-size: 18px
+        font-weight: 400
+    &__copyright
+        margin-top: 50px
+        font-size: 32px
+        font-weight: 400

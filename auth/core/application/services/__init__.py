@@ -1,0 +1,1 @@
+from auth.core.application.services import user_service

@@ -1,0 +1,8 @@
+sqlalchemy
+asyncpg
+fastapi
+email-validator
+python-jose
+python-multipart
+pymongo
+motor

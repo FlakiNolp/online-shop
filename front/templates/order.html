@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header">
+        <h1 class="header__title" onclick="changeLocationCollection()">Wish</h1>
+        <nav class="header__menu">
+            <ul class="header__list">
+                <li class="header__item" onclick="changeLocationLogin()">
+                    <img src="img/person.svg" alt="person">
+                    <div id="login">Войти</div>
+                </li>
+                <li class="header__item" onclick="changeLocationOrder()">
+                    <img src="img/order.svg" alt="person">
+                    <div id="order">Заказы</div>
+                </li>
+                <li class="header__item" onclick="changeLocationCart()">
+                    <img src="img/shop.svg" alt="person">
+                    <div id="cart">Корзина</div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+<div id="catalog__content">
+</div>
+<footer class="footer">
+        <div class="footer__text">Служба поддержки</div>
+        <a href="tel:+7(999)999-99-99" class="footer__tel">+7(999)999-99-99|</a>
+        <a href="mailto:9JpjF@example.com" class="footer__email">9JpjF@example.com</a>
+        <div class="footer__time">c 8:00 до 22:00  по МСК</div>
+        <div class="footer__copyright">Wish</div>
+    </footer>
+</body>
+<script>
+function changeLocationCart() {
+    window.location.href = '/cart'
+}
+function changeLocationLogin() {
+    window.location.href = '/login'
+}
+function changeLocationOrder() {
+    window.location.href = '/order'
+}
+function changeLocationCollection() {
+    window.location.href = '/collection'
+}
+    const products = document.getElementById('catalog__content')
+    main()
+
+    async function main(){
+        let response = await fetch(
+            'http://192.168.3.11:1002/get-all-orders', {
+            method: "GET",
+            headers: {'Authorization': localStorage.getItem('access_token'), 'Accept': 'application/json', 'Content-Type': 'application/json'},
+        })
+        if (response.ok) {
+            data = await response.json()
+            console.log(data)
+            products.innerHTML = ''
+            for (const [key, value] of Object.entries(data)) {
+                let div = document.createElement('div')
+                div.id = key
+                //div.className = 'catalog__card'
+                //let image = document.createElement('img')
+                //image.src = `static/${value.images[0]}`
+                //image.style.width = 400
+                //image.style.length = 600
+                //div.appendChild(image)
+                let div_name = document.createElement('div')
+                let div_datetime = document.createElement('div')
+                //div_name.className = 'catalog__card-name'
+                //div_datetime.className = 'catalog__card-datetime'
+                div_name.innerHTML = value.name + '\n'
+                div_datetime.innerHTML = value.datetime.substring(0, 10) + '\n'
+                div.append(div_name, div_datetime)
+                products.appendChild(div)
+            }
+        }
+        else {
+            if (response.status === 401) {
+                alert('Вам нужно авторизоваться')
+            }
+        }
+    }
+</script>
+</html>

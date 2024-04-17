@@ -1,0 +1,53 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header__title">Wish</h1>
+        <nav class="header__menu">
+            <ul class="header__list">
+                <li class="header__item" onclick="changeLocationLogin()">
+                    <img src="img/person.svg" alt="person">
+                    <div id="login">Войти</div>
+                </li>
+                <li class="header__item" onclick="changeLocationOrder()">
+                    <img src="img/order.svg" alt="person">
+                    <div id="order">Заказы</div>
+                </li>
+                <li class="header__item" onclick="changeLocationCart()">
+                    <img src="img/shop.svg" alt="person">
+                    <div id="cart">Корзина</div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section class="catalog">
+        <div class="catalog__info">
+            <div class="catalog__back">ГЛАВНАЯ / КОЛЛЕКЦИЯ</div>
+            <h2 class="catalog__title">COLLECTION</h2>
+            <ul id="catalog__categories">
+            </ul>
+        </div>
+        <div id="catalog__content" class="catalog__content">
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer__text">Служба поддержки</div>
+        <a href="tel:+7(999)999-99-99" class="footer__tel">+7(999)999-99-99|</a>
+        <a href="mailto:9JpjF@example.com" class="footer__email">9JpjF@example.com</a>
+        <div class="footer__time">c 8:00 до 22:00  по МСК</div>
+        <div class="footer__copyright">Wish</div>
+    </footer>
+    <script src="js/collection.js" type="application/javascript"></script>
+</body>
+</html>
